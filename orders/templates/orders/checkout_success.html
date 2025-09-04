@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<h1>Order Successful 🎉</h1>
+<p>Thank you for your order.</p>
+<p><strong>Order ID:</strong> {{ order.id }}</p>
+<p>Total: ₹{{ order.get_total_cost }}</p>
+<a href="{% url 'store:product_list' %}">Continue Shopping</a>
+{% endblock %}

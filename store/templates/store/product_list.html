@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<h1>Products{% if category %} — {{ category.name }}{% endif %}</h1>
+<div class="categories">
+    <a href="/">All</a>
+    {% for c in categories %}
+    <a href="{{ c.get_absolute_url }}">{{ c.name }}</a>
+    {% endfor %}
+</div>
+<div class="product-grid">
+    {% for product in products %}
+    <div class="product-card">
+        <a href="{{ product.get_absolute_url }}">
+            {% if product.image %}
+            <img src="{{ product.image.url }}" alt="{{ product.name }}">
+            {% endif %}
+            <h3>{{ product.name }}</h3>
+            <p>₹{{ product.price }}</p>
+        </a>
+        <form action="{% url 'cart:add_to_cart' product.id %}" method="post">
+            {% csrf_token %}
+            <input type="number" name="quantity" value="1" min="1">
+            <button type="submit">Add to cart</button>
+        </form>
+    </div>
+    {% empty %}
+    <p>No products found.</p>
+    {% endfor %}
+</div>
+{% endblock %}
