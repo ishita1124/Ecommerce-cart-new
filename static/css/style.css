@@ -29,6 +29,14 @@ body {
     transition: transform 0.2s;
 }
 
+.product-image {
+    width: 100%;
+    height: 200px;          /* Set fixed height so all images look equal */
+    object-fit: cover;      /* Crop images nicely to fill the box */
+    border-radius: 8px;     /* Optional smooth corners */
+    display: block;
+}
+
 .product-card:hover {
     transform: translateY(-5px);
     box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
@@ -57,4 +65,33 @@ body {
 footer {
     margin-top: 40px;
     font-size: 0.9rem;
+}
+
+/* CATEGORY BUTTON WRAPPER */
+.category-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin: 20px 0;
+}
+
+/* CATEGORY BUTTON STYLE */
+.category-btn {
+    padding: 8px 18px;
+    background-color: #f1f1f1;
+    border-radius: 20px;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 600;
+    color: #333;
+    border: 2px solid #cccccc;
+    transition: 0.2s ease-in-out;
+}
+
+/* HOVER EFFECT */
+.category-btn:hover {
+    background-color: #007bff;
+    color: white;
+    border-color: #0056b3;
+    transform: translateY(-2px);
 }
